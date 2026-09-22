@@ -4,16 +4,17 @@ import com.paryogsaala.javaengineeringlabs.ordermanagement.model.Order;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class OrderRepository {
     private final Map<UUID, Order> ordersById = new HashMap<>();
 
-    private void save(Order order) {
+    public void save(Order order) {
        ordersById.put(order.getOrderId(),order);
 
     }
-    public Order findById(UUID orderId) {
-        return ordersById.get(orderId);
+    public Optional<Order> findById(UUID orderId) {
+        return Optional.ofNullable(ordersById.get(orderId));
     }
 }
