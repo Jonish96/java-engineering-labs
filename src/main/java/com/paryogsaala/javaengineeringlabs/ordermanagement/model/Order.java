@@ -52,6 +52,36 @@ public class Order {
     private OrderStatus getOrderStatus() {
         return status;
     }
+    public void cancel(){
+        if(this.status == OrderStatus.SHIPPED){
+            throw new IllegalStateException("Shipped order cannot be cancelled.");
+        }
+        if(this.status == OrderStatus.CANCELLED){
+            throw new IllegalStateException("Order already cancelled.");
+        }
+        this.status = OrderStatus.CANCELLED;
+    }
+    public void confirm(){
+        if(this.status != OrderStatus.CREATED){
+            throw new IllegalStateException(
+                    "Only a created order can be confirmed");
+        }
+        this.status = OrderStatus.CONFIRMED;
+    }
+    public void process() {
+        if (this.status != OrderStatus.CONFIRMED) {
+            throw new IllegalStateException(
+                    "Only a confirmed order can be processed"
+            );
+        }
+        this.status = OrderStatus.PROCESSING;
+    }
+    public void shipped(){
+        if(this.status != OrderStatus.PROCESSING){
+            throw new IllegalStateException("Only a shipped order can be processed");
+        }
+        this.status = OrderStatus.SHIPPED;
+    }
 
 
     @Override

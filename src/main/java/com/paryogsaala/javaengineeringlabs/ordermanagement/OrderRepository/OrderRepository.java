@@ -2,10 +2,7 @@ package com.paryogsaala.javaengineeringlabs.ordermanagement.OrderRepository;
 
 import com.paryogsaala.javaengineeringlabs.ordermanagement.model.Order;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class OrderRepository {
     private final Map<UUID, Order> ordersById = new HashMap<>();
@@ -16,5 +13,9 @@ public class OrderRepository {
     }
     public Optional<Order> findById(UUID orderId) {
         return Optional.ofNullable(ordersById.get(orderId));
+    }
+    public List<Order> findAll() {
+        List<Order> orders = new ArrayList<>();
+        return new ArrayList<>(ordersById.values());
     }
 }
