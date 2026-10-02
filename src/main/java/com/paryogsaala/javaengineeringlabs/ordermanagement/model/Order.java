@@ -78,8 +78,9 @@ public class Order {
     }
     public void shipped(){
         if(this.status != OrderStatus.PROCESSING){
-            throw new IllegalStateException("Only a shipped order can be processed");
-        }
+            throw new IllegalStateException(
+                    "Only a processing order can be shipped"
+            );        }
         this.status = OrderStatus.SHIPPED;
     }
 

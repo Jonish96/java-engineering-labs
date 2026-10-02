@@ -62,7 +62,8 @@ public class OrderServiceTest {
                 new BigDecimal("1299.99")
         );
 
-        Mockito.verify(orderRepository)
+        Mockito.verify(orderRepository,
+                        Mockito.times(1)    )
                 .save(order);
     }
 }
