@@ -3,11 +3,14 @@ package com.paryogsaala.javaengineeringlabs.ordermanagement.service;
 import com.paryogsaala.javaengineeringlabs.ordermanagement.OrderRepository.OrderRepository;
 import com.paryogsaala.javaengineeringlabs.ordermanagement.exception.OrderNotFoundException;
 import com.paryogsaala.javaengineeringlabs.ordermanagement.model.Order;
+import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class OrderService {
     private final OrderRepository orderRepository;
     public OrderService(OrderRepository orderRepository) {

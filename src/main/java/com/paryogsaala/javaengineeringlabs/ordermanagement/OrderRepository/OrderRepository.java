@@ -1,9 +1,11 @@
 package com.paryogsaala.javaengineeringlabs.ordermanagement.OrderRepository;
 
 import com.paryogsaala.javaengineeringlabs.ordermanagement.model.Order;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class OrderRepository {
     private final Map<UUID, Order> ordersById = new HashMap<>();
 
